@@ -23,7 +23,9 @@ class SlamResponse(models.Model):
     suggestions = models.TextField()
     unsaid_thing = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
-
+    
+    def __str__(self):
+        return f"Slam - {self.name}"
 
 # Quiz Responses
 class QuizResponse(models.Model):
@@ -41,21 +43,28 @@ class QuizResponse(models.Model):
     q11_overthinking = models.CharField(max_length=100)
     score = models.IntegerField(default=0)
     created_at = models.DateTimeField(auto_now_add=True)
-
+    
+    def __str__(self):
+        return f"Quiz - {self.name} ({self.score}%)"
 
 # Notes for Disha
 class Note(models.Model):
     name = models.CharField(max_length=100)
     message = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
+    
+    def __str__(self):
+        return f"Note - {self.name}"
 
 
 # Favorites Section
-class Favorite(models.Model):
+class FavoriteResponse(models.Model):
     name = models.CharField(max_length=100)
-    food = models.CharField(max_length=100)
-    song = models.CharField(max_length=100)
-    place = models.CharField(max_length=100)
-    movie = models.CharField(max_length=100)
-    match_percentage = models.IntegerField(default=0)
+    favorite_food = models.CharField(max_length=255, blank=True)
+    favorite_song_type = models.CharField(max_length=255, blank=True)
+    favorite_place = models.CharField(max_length=255, blank=True)
+    favorite_movie_vibe = models.CharField(max_length=255, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"Favorites - {self.name}"
