@@ -2,6 +2,8 @@ import json
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from .models import SlamResponse, QuizResponse, Note, FavoriteResponse
+from django.core.mail import send_mail
+from django.conf import settings
 
 
 QUIZ_ANSWERS = {
@@ -51,6 +53,24 @@ def slam_view(request):
 
     return JsonResponse({"error": "Only POST allowed"}, status=405)
 
+slam = serializer.save()
+
+send_mail(
+    subject=f"New Slam from {slam.name}",
+    message=f"""
+Name: {slam.name}
+Nickname: {slam.nickname}
+How met: {slam.how_met}
+First impression: {slam.first_impression}
+Favorite thing: {slam.favorite_thing}
+3 words: {slam.describe_in_3_words}
+Memory: {slam.memory}
+Message: {slam.unsaid_thing}
+""",
+    from_email=settings.DEFAULT_FROM_EMAIL,
+    recipient_list=[settings.EMAIL_HOST_USER],
+    fail_silently=False,
+)
 
 @csrf_exempt
 def quiz_view(request):
