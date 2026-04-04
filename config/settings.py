@@ -65,11 +65,15 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
+import dj_database_url
+import os
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    "default": dj_database_url.parse(
+        os.environ.get("postgresql://dishaverse_user:Pt8tyKw7N3jl192eMOMF1bk5zJAkuI1k@dpg-d78h950ule4c73a33es0-a/dishaverse"),
+        conn_max_age=600,
+        ssl_require=True
+    )
 }
 
 
