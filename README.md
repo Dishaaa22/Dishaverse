@@ -1,17 +1,5 @@
 # dishaverse
 
-A new Flutter project.
+DishaVerse is a full-stack personal mobile application built using Flutter and Django. Inspired by the traditional concept of a slam book, the application provides an interactive digital space where users can share information about themselves, answer questions, play games and quizzes, and leave personal notes.
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+The project combines a modern Flutter frontend with a Django backend and includes a separate administrator interface for securely viewing and managing submitted responses and application data.
